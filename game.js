@@ -1,9 +1,14 @@
 
 var Targets = function(name, health, hits){
-    this.name = name
-    this.health = health
+    this.name = name;
+    this.health = health;
     this.hits = hits
 }
+
+var Items = function(physDmg, fireDmg, magDmg){
+	this.physDmg = physDmg;
+	this.fireDmg = fireDmg;
+	this.magDmg = magDmg
 
 var patches = new Targets("Trusty Patches", 100, 0)
 
