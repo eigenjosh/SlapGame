@@ -9,6 +9,7 @@ var Items = function(physDmg, fireDmg, magDmg){
 	this.physDmg = physDmg;
 	this.fireDmg = fireDmg;
 	this.magDmg = magDmg
+}
 
 var patches = new Targets("Trusty Patches", 100, 0)
 
