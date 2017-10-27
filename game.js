@@ -23,10 +23,14 @@ var items = new Sword("Zweihander", 7, "git gud casul")
 
 function giveItem(items) {
     target.items.push(items)
+    addMods()
+    update()
 }
 
-function removeItem(items) {
+function removeItem() {
     target.items.pop()
+    removeMods()
+    update()
 }
 
 function addMods() {
@@ -39,15 +43,18 @@ function addMods() {
     }
 }
 
+function removeMods(){
+    totalMod -= target.items.lastIndexOf.physDmg
+    return totalMod
+}
+
 function slap() {
-    addMods()
     target.health -= ( totalMod + 1 )
     target.hits += 1
     update()
 }
 
 function punch() {
-    addMods()
     target.health -= 5
     target.hits += 1
     update()
