@@ -28,8 +28,8 @@ function giveItem(items) {
 }
 
 function removeItem() {
-    target.items.pop()
     removeMods()
+    target.items.pop()
     update()
 }
 
@@ -44,12 +44,12 @@ function addMods() {
 }
 
 function removeMods(){
-    totalMod -= target.items.lastIndexOf.physDmg
+    totalMod -= target.items.physDmg
     return totalMod
 }
 
 function slap() {
-    target.health -= ( totalMod + 1 )
+    target.health -= 1 
     target.hits += 1
     update()
 }
