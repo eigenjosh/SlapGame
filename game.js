@@ -15,9 +15,11 @@ var Item = function (name, physDmg, description) {
 }
 
 
-var target = new Target("Trusty patches", 100, 0)
+var totalMod = 0
 
-var items = new Item("Zweihander", 41, "git gud casul")
+var target = new Target("Trusty Patches", 100, 0)
+
+var items = new Item("Zweihander", 7, "git gud casul")
 
 function giveZwei(items) {
     target.items.push(items)
@@ -26,7 +28,6 @@ function giveZwei(items) {
 giveZwei(items)
 
 function addMods() {
-    var totalMod = 0
 
     for (var i = 0; i < target.items.length; i++) {
         totalMod += target.items[i].physDmg
@@ -37,12 +38,14 @@ function addMods() {
 }
 
 function slap() {
-    target.health -= 1
+    addMods()
+    target.health -= ( totalMod + 1 )
     target.hits += 1
     update()
 }
 
 function punch() {
+    addMods()
     target.health -= 5
     target.hits += 1
     update()
