@@ -1,4 +1,6 @@
-
+var health = 100
+var name = "Trusty Patches"
+var hits = 0
 
 var targets = {
     
@@ -19,7 +21,7 @@ var Items = function(physicalDmg,  option3){
 	this.option1 = option1;
 	this.option2 = option2;
 	this.option3 = option3;
-
+}
 
 function slap(){
     health -= 1
@@ -42,9 +44,9 @@ function kick(){
 
 
 function update(){
-    document.getElementById('health').innerText = targets.health
-    document.getElementById('hits').innerText = targets.hits
-    document.getElementById('name').innerText = targets.name
+    document.getElementById('health').innerText = health
+    document.getElementById('hits').innerText = hits
+    document.getElementById('name').innerText = name
 }
 
 update()
