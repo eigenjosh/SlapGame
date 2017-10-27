@@ -1,42 +1,44 @@
 
-var Targets = function(name, health, hits){
+var Target = function(name, health, hits){
     this.name = name;
     this.health = health;
     this.hits = hits
 }
 
-var Items = function(physDmg, fireDmg, magDmg){
+var Item = function(name, physDmg, description){
+	this.name = name;
 	this.physDmg = physDmg;
-	this.fireDmg = fireDmg;
-	this.magDmg = magDmg
+	this.description = description
 }
 
-var patches = new Targets("Trusty Patches", 100, 0)
+var targets = new Target("Trusty patches", 100, 0)
+
+var items = new Item("Zweihander",41,"git gud casul")
 
 function slap(){
-    patches.health -= 1
-    patches.hits += 1
+    targets.health -= 1
+    targets.hits += 1
     update()
 }
 
 function punch(){
-    patches.health -= 5
-    patches.hits += 1
+    targets.health -= 5
+    targets.hits += 1
     update()
 }
 
 function kick(){
-    patches.health -= 10
-    patches.hits += 1
+    targets.health -= 10
+    targets.hits += 1
     update()
 }
 
 
 
 function update(){
-    document.getElementById('health').innerText = patches.health
-    document.getElementById('hits').innerText = patches.hits
-    document.getElementById('name').innerText = patches.name
+    document.getElementById('health').innerText = targets.health
+    document.getElementById('hits').innerText = targets.hits
+    document.getElementById('name').innerText = targets.name
 }
 
 update()
