@@ -8,7 +8,7 @@ var Target = function (name, health, hits) {
 
 
 
-var Item = function (name, physDmg, description) {
+var Sword = function (name, physDmg, description) {
     this.name = name;
     this.physDmg = physDmg;
     this.description = description
@@ -19,13 +19,15 @@ var totalMod = 0
 
 var target = new Target("Trusty Patches", 100, 0)
 
-var items = new Item("Zweihander", 7, "git gud casul")
+var items = new Sword("Zweihander", 7, "git gud casul")
 
-function giveZwei(items) {
+function giveItem(items) {
     target.items.push(items)
 }
 
-giveZwei(items)
+function removeItem(items) {
+    target.items.pop()
+}
 
 function addMods() {
 
@@ -56,7 +58,6 @@ function kick() {
     target.hits += 1
     update()
 }
-
 
 
 function update() {
