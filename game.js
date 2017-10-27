@@ -6,6 +6,8 @@ var Target = function (name, health, hits) {
     this.items = []
 }
 
+
+
 var Item = function (name, physDmg, description) {
     this.name = name;
     this.physDmg = physDmg;
@@ -13,41 +15,51 @@ var Item = function (name, physDmg, description) {
 }
 
 
-var targets = new Target("Trusty patches", 100, 0)
+var target = new Target("Trusty patches", 100, 0)
 
 var items = new Item("Zweihander", 41, "git gud casul")
 
 function giveZwei(items) {
-    targets.items.push(items)
+    target.items.push(items)
 }
 
 giveZwei(items)
-console.log(targets.items)
+
+function addMods() {
+    var totalMod = 0
+
+    for (var i = 0; i < target.items.length; i++) {
+        totalMod += target.items[i].physDmg
+
+        return 'Item DMG modifier: ' + totalMod
+
+    }
+}
 
 function slap() {
-    targets.health -= 1
-    targets.hits += 1
+    target.health -= 1
+    target.hits += 1
     update()
 }
 
 function punch() {
-    targets.health -= 5
-    targets.hits += 1
+    target.health -= 5
+    target.hits += 1
     update()
 }
 
 function kick() {
-    targets.health -= 10
-    targets.hits += 1
+    target.health -= 10
+    target.hits += 1
     update()
 }
 
 
 
 function update() {
-    document.getElementById('health').innerText = targets.health
-    document.getElementById('hits').innerText = targets.hits
-    document.getElementById('name').innerText = targets.name
+    document.getElementById('health').innerText = target.health
+    document.getElementById('hits').innerText = target.hits
+    document.getElementById('name').innerText = target.name
 }
 
 update()
