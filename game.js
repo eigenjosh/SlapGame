@@ -21,11 +21,10 @@ var Sword = function (name, physDmg, description) {
 }
 
 
-var totalMod = 0
 
 var target = new Target("Trusty Patches", 100, 0)
 
-var items = new Sword("Zweihander", 7, "git gud casul")
+var items = new Sword("Zweihander", 1.3, "git gud casul")
 
 
 function giveItem(items) {
@@ -37,27 +36,22 @@ function giveItem(items) {
 
 function addMods() {
 
-    for (var i = 0; i < target.items.length; i++) {
-        totalMod += target.items[i].physDmg
+    for (var i = 0; i < player.items.length; i++) {
+        totalMod += player.items[i].physDmg
 
         return 'Item DMG modifier: ' + totalMod
 
     }
 }
 
-function removeMods() {
-    totalMod -= target.items.physDmg
-    return totalMod
-}
-
 function slap() {
-    target.health -= 1
+    target.health -= 1 * totalMod
     target.hits += 1
     update()
 }
 
 function punch() {
-    target.health -= 5
+    target.health -= 5 * totalMod
     target.hits += 1
     update()
 }
@@ -68,13 +62,12 @@ function kick() {
     update()
 }
 
-if (target.health)
 
-    function update() {
-        document.getElementById('health').innerText = target.health
-        document.getElementById('hits').innerText = target.hits
-        document.getElementById('name').innerText = target.name
+function update() {
+    document.getElementById('health').innerText = target.health
+    document.getElementById('hits').innerText = target.hits
+    document.getElementById('name').innerText = target.name
 
-    }
+}
 
 update()
