@@ -10,7 +10,8 @@ var player = {
     name: 'Player 1',
     health: 100,
     hits: 0,
-    items: []
+    items: [],
+    totalMod: 0
 }
 
 
@@ -37,21 +38,21 @@ function giveItem(items) {
 function addMods() {
 
     for (var i = 0; i < player.items.length; i++) {
-        totalMod += player.items[i].physDmg
+        player.totalMod += player.items[i].physDmg
 
-        return 'Item DMG modifier: ' + totalMod
+        return 'Item DMG modifier: ' + player.totalMod
 
     }
 }
 
 function slap() {
-    target.health -= 1 * totalMod
+    target.health -= 1 * player.totalMod
     target.hits += 1
     update()
 }
 
 function punch() {
-    target.health -= 5 * totalMod
+    target.health -= 5 * player.totalMod
     target.hits += 1
     update()
 }
