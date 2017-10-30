@@ -25,9 +25,7 @@ var totalMod = 0
 
 var target = new Target("Trusty Patches", 100, 0)
 
-var items =
-
-    new Sword("Zweihander", 7, "git gud casul")
+var items = new Sword("Zweihander", 7, "git gud casul")
 
 
 function giveItem(items) {
@@ -36,11 +34,6 @@ function giveItem(items) {
     update()
 }
 
-function removeItem() {
-    removeMods()
-    target.items.pop()
-    update()
-}
 
 function addMods() {
 
