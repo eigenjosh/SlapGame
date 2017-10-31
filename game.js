@@ -1,20 +1,26 @@
 
-var Target = function (name, health, hits) {
+
+
+
+//SERVICE PRIVATE
+var Target = function (name, health) {
     this.name = name;
     this.health = health;
-    this.hits = hits
+    this.hits = 0;
     this.items = []
 }
 
-var player = {
-    name: 'Player 1',
-    health: 100,
-    hits: 0,
-    items: [],
-    totalMod: 0
+
+//SERVICE PRIVATE
+var Player = function (name,health) {
+    this.name = name;
+    this.health = health;
+    this.totalMod = 1;
+    this.hits = 0;
+    this.items = [];
 }
 
-
+//SERVICE PRIVATE
 var Sword = function (name, physDmg, description) {
     this.name = name;
     this.physDmg = physDmg;
@@ -22,19 +28,24 @@ var Sword = function (name, physDmg, description) {
 }
 
 
+//SERVICE PRIVATE
+var target = new Target("Trusty Patches", 100)
 
-var target = new Target("Trusty Patches", 100, 0)
-
+//SERVICE PRIVATE
 var items = new Sword("Zweihander", 1.3, "git gud casul")
 
+//SERVICE PRIVATE
+var player = new Player("Host of Embers", 100)
 
+
+//CONTROLLER PUBLIC
 function giveItem(items) {
     player.items.push(items)
     addMods()
     update()
 }
 
-
+//BOTH//
 function addMods() {
 
     for (var i = 0; i < player.items.length; i++) {
@@ -44,8 +55,11 @@ function addMods() {
 
     }
 }
+//----//
 
-function slap() {
+
+//BOTH//
+function slap(target) {
     target.health -= 1 * player.totalMod
     target.hits += 1
     update()
@@ -62,8 +76,9 @@ function kick() {
     target.hits += 1
     update()
 }
+//----//
 
-
+//CONTROLLER PRIVATE
 function update() {
     document.getElementById('health').innerText = target.health
     document.getElementById('hits').innerText = target.hits
