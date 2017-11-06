@@ -1,89 +1,71 @@
-
-
-
-
-//SERVICE PRIVATE
 var Target = function (name, health) {
     this.name = name;
     this.health = health;
-    this.hits = 0;
-    this.items = []
+    this.hits = 0
 }
 
+var player = {
+    health: 100,
+    slapDmg: 1,
+    punchDmg: 5,
+    kickDmg: 10,
+    items: []
+}
 
-//SERVICE PRIVATE
-var Player = function (name,health) {
+var Item = function (name, mod, description) {
     this.name = name;
-    this.health = health;
-    this.totalMod = 1;
-    this.hits = 0;
-    this.items = [];
+    this.mod = mod;
+    this.description = description;
 }
 
-//SERVICE PRIVATE
-var Sword = function (name, physDmg, description) {
-    this.name = name;
-    this.physDmg = physDmg;
-    this.description = description
-}
-
-
-//SERVICE PRIVATE
 var target = new Target("Trusty Patches", 100)
 
-//SERVICE PRIVATE
-var items = new Sword("Zweihander", 1.3, "git gud casul")
-
-//SERVICE PRIVATE
-var player = new Player("Host of Embers", 100)
-
-
-//CONTROLLER PUBLIC
-function giveItem(items) {
-    player.items.push(items)
-    addMods()
-    update()
+var items = {
+    sword: new Item("Zweihander", 1.6, "git gud"),
+    boots: new Item("Leggings of Thorns", 1.3, "ouch"),
+    unarmed: new Item("Caestus", 1.8, "wicked bruh")
 }
 
-//BOTH//
 function addMods() {
 
-    for (var i = 0; i < player.items.length; i++) {
-        player.totalMod += player.items[i].physDmg
+    var modTotal = 1
 
-        return 'Item DMG modifier: ' + player.totalMod
-
+    for (i in player.items) {
+        modTotal += player.items[i].mod
     }
+    return modTotal
 }
-//----//
 
+function give(item) {
+    player.items.push(item);
+    update();
 
-//BOTH//
-function slap(target) {
-    target.health -= 1 * player.totalMod
-    target.hits += 1
+}
+
+function slap() {
+    var damage = 1
+    target.health -= damage * addMods()
+    this.hits++
     update()
 }
-
 function punch() {
-    target.health -= 5 * player.totalMod
-    target.hits += 1
+    var damage = 5
+    target.health -= damage * addMods()
+    this.hits++
     update()
+    
 }
-
 function kick() {
-    target.health -= 10
-    target.hits += 1
+    var damage = 10
+    target.health -= damage * addMods()
+    this.hits++
     update()
+    
 }
-//----//
 
-//CONTROLLER PRIVATE
 function update() {
+    document.getElementById('name').innerText = target.name
     document.getElementById('health').innerText = target.health
     document.getElementById('hits').innerText = target.hits
-    document.getElementById('name').innerText = target.name
-
 }
-
 update()
