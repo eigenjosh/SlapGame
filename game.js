@@ -45,20 +45,20 @@ function give(item) {
 function slap() {
     var damage = 1
     target.health -= damage * addMods()
-    this.hits++
+    target.hits++
     update()
 }
 function punch() {
     var damage = 5
     target.health -= damage * addMods()
-    this.hits++
+    target.hits++
     update()
     
 }
 function kick() {
     var damage = 10
     target.health -= damage * addMods()
-    this.hits++
+    target.hits++
     update()
     
 }
